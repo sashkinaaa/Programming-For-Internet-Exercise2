@@ -1,0 +1,79 @@
+﻿@*@using Upr2.Models
+@model Employee*@
+
+@*@using Upr2.ViewModels
+@model EmployeeViewModel*@
+
+@using Upr2.ViewModels
+@model EmployeeListViewModel
+
+@{
+    ViewBag.Title = "GetView";
+}
+
+<h2>MyView</h2>
+
+@*<div>
+    @{
+        Upr2.Models.Employee emp = (Upr2.Models.Employee)
+        ViewBag.Employee;
+        //ViewData["Employee"];
+    }
+
+    <b>Employee Details </b><br />
+    Employee Name : @(emp.FirstName +" "+emp.LastName) <br />
+    Employee Salary: @emp.Salary.ToString("C")
+</div>*@
+
+@*<b>Employee Details</b>
+<br />
+Employee Name : @Model.FirstName @Model.LastName
+<br />
+@if (Model.Salary > 15000)
+{
+    <span style="background-color:yellow">
+        Employee Salary: @Model.Salary.ToString("C")
+    </span>
+}
+else
+{
+    <span style="background-color:green">
+
+        Employee Salary: @Model.Salary.ToString("C")
+    </span>
+}*@
+
+@*Hello @Model.UserName
+<hr />
+<div>
+    <b>Employee Details</b><br />
+    Employee Name : @Model.EmployeeName <br />
+    <span style="background-color:@Model.SalaryColor">
+        Employee Salary: @Model.Salary
+    </span>
+</div>*@
+
+<body>
+    
+    <div>
+        <table>
+            <tr>
+                <th>Employee Name</th>
+                <th>Salary</th>
+            </tr>
+            @foreach (EmployeeViewModel item in Model.Employees)
+            {
+                <tr>
+                    <td>@item.EmployeeName</td>
+                    <td style="background-color:@item.SalaryColor">@item.Salary</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <a href="/Employee/AddNew">Add New</a>
+</body>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
